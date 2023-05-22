@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/black"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -14,59 +15,62 @@
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_android_black_24dp"
+        android:src="@drawable/dp"
         app:civ_border_width="2dp"
         app:civ_border_color="#FF000000"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Title Section"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-
+            android:id="@+id/tv_quiz"
             android:textSize="22sp"
             android:textColor="@color/white"
-            android:text="Ques: 1/4"
+            android:text="Ques: 1/10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
         <TextView
             android:layout_alignParentEnd="true"
             android:textSize="22sp"
             android:textColor="@color/white"
-            android:text="Points: 4"
+            android:text="Time: 10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
-
     <com.google.android.material.divider.MaterialDivider
         app:dividerColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="2dp"/>
+
+    <TextView
+        android:id="@+id/tv_quiz_id"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="20dp"/>
    <RelativeLayout
        android:layout_width="match_parent"
-       android:layout_height="70dp"
+       android:layout_height="60dp"
+       android:id="@+id/rl_1"
        android:gravity="center_vertical"
-       android:padding="20sp"
        android:background="@drawable/layout"
        android:orientation="horizontal">
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
+           android:padding="10dp"
            android:id="@+id/tv1st_opt"
            android:textSize="25sp"
            android:textStyle="bold"
@@ -77,19 +81,20 @@
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:padding="10dp"
+           android:id="@+id/tv_opt1"
            android:layout_toEndOf="@+id/tv1st_opt"
            android:textColor="@color/black"
            android:textSize="25sp"
-
            android:text="1st question"/>
 
 
        <ImageView
            android:layout_alignParentEnd="true"
            android:visibility="visible"
-           app:tint="@color/black"
-
            android:src="@drawable/ic_baseline_check_24"
+           android:background="@drawable/circle"
+           android:id="@+id/imgv_1"
            android:layout_width="50dp"
            android:layout_height="match_parent"/>
    </RelativeLayout>
@@ -98,9 +103,9 @@
         android:layout_height="10dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:padding="20dp"
-    android:background="@drawable/layout1"
+        android:layout_height="60dp"
+        android:id="@+id/rl_2"
+        android:background="@drawable/layout"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
@@ -108,6 +113,7 @@
             android:id="@+id/tv2nd_opt"
             android:textSize="25sp"
             android:layout_marginEnd="20dp"
+            android:padding="10dp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:background="@drawable/circle"
@@ -116,6 +122,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25sp"
+            android:padding="10dp"
+            android:id="@+id/tv_opt2"
            android:layout_toEndOf="@+id/tv2nd_opt"
             android:textColor="@color/black"
             android:text="2nd question"/>
@@ -124,6 +132,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:visibility="invisible"
+            android:id="@+id/imgv_2"
+            android:background="@drawable/circle"
             android:src="@drawable/ic_baseline_check_24"/>
     </RelativeLayout>
     <Space
@@ -131,9 +141,9 @@
         android:layout_height="10dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
+        android:id="@+id/rl_3"
         android:background="@drawable/layout"
-        android:padding="20dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
@@ -141,6 +151,7 @@
             android:id="@+id/tv3rd_opt"
             android:layout_marginEnd="20dp"
             android:textSize="25sp"
+            android:padding="10dp"
             android:textColor="@color/black"
             android:background="@drawable/circle"
             android:layout_gravity="center"
@@ -149,6 +160,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:textColor="@color/black"
+            android:padding="10dp"
+            android:id="@+id/tv_opt3"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/tv3rd_opt"
             android:textSize="25sp"
@@ -157,7 +170,9 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_baseline_check_24"
+            android:background="@drawable/circle"
             android:layout_alignParentEnd="true"
+            android:id="@+id/imgv_3"
             android:visibility="invisible"/>
     </RelativeLayout>
     <Space
@@ -165,9 +180,9 @@
         android:layout_height="10dp"/>
     <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="70dp"
-        android:padding="20dp"
+    android:layout_height="60dp"
     android:background="@drawable/layout"
+        android:id="@+id/rl_4"
     android:orientation="horizontal">
     <TextView
         android:layout_width="wrap_content"
@@ -176,6 +191,7 @@
         android:layout_marginEnd="20dp"
         android:textSize="25sp"
         android:textColor="@color/black"
+        android:padding="10dp"
         android:background="@drawable/circle"
         android:textStyle="bold"
         android:layout_gravity="center"
@@ -184,14 +200,18 @@
         android:layout_width="wrap_content"
         android:textColor="@color/black"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:layout_toEndOf="@+id/tv4th_opt"
+        android:id="@+id/tv_opt4"
         android:textSize="25sp"
         android:text="4th question"/>
     <ImageView
         android:layout_width="50dp"
         android:layout_height="match_parent"
         android:src="@drawable/ic_baseline_check_24"
+        android:background="@drawable/circle"
         android:layout_alignParentEnd="true"
+        android:id="@+id/imgv_4"
         android:visibility="invisible"/>
 </RelativeLayout>
     <Space
@@ -202,6 +222,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="Next"
+        android:id="@+id/btn_next"
         android:textColor="@color/white"
         android:textSize="20sp" />
 </LinearLayout>
