@@ -1,22 +1,30 @@
 package com.example.quiz
 
+
+import android.annotation.SuppressLint
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
-    private val question = listOf<MOdelQuestion>( MOdelQuestion(
-        "বঙ্গবন্ধু শেখ মুজিবুর রহমান পাকিস্তানের কারাগার থেকে মুক্তি পান কতো তারিখে?",
-        "৯ জানুয়ারী ১৯৭২",
-        "১৬ ডিসেম্বর ১৯৭২",
-        "৮ জানুয়ারি ১৯৭২ ",
-        "১০ জানুয়ারি ১৯৭২",
-        "c"
-    ),
+    private val question = listOf(
+        MOdelQuestion(
+            "বঙ্গবন্ধু শেখ মুজিবুর রহমান পাকিস্তানের কারাগার থেকে মুক্তি পান কতো তারিখে?",
+            "৯ জানুয়ারী ১৯৭২",
+            "১৬ ডিসেম্বর ১৯৭২",
+            "৮ জানুয়ারি ১৯৭২ ",
+            "১০ জানুয়ারি ১৯৭২",
+            "c"
+        ),
         MOdelQuestion(
             "গ্রীষ্মকাল কোন মাসে পরে?",
             "বৈশাখ",
@@ -24,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             "ফাল্গুন",
             "কার্তিক",
             "C"
-            ),
+        ),
         MOdelQuestion(
             "আন্তর্জাতিক মহিলা দিবস পালন করা হয় কত তারিখে?",
             "8 মার্চ",
@@ -90,36 +98,48 @@ class MainActivity : AppCompatActivity() {
         )
 
     )
-    var index = 0
+    private var index = 0
+    private var right = 0
+    private var isoptSelected = false
 
-    lateinit var tvQusNo : TextView
+    private lateinit var tvQusNo: TextView
+    private lateinit var btnNex: Button
 
+    private lateinit var rlopt1: RelativeLayout
+    private lateinit var rlopt2: RelativeLayout
+    private lateinit var rlopt3: RelativeLayout
+    private lateinit var rlopt4: RelativeLayout
 
-    lateinit var rlopt1 :RelativeLayout
-    lateinit var rlopt2 :RelativeLayout
-    lateinit var rlopt3 :RelativeLayout
-    lateinit var rlopt4 :RelativeLayout
-
-    lateinit var tvQus : TextView
-    lateinit var tvop1 : TextView
-    lateinit var tvop2 : TextView
-    lateinit var tvop3 : TextView
-    lateinit var tvop4 : TextView
-
-
-    lateinit var ivopt1: ImageView
-    lateinit var ivopt2: ImageView
-    lateinit var ivopt3: ImageView
-    lateinit var ivopt4: ImageView
+    private lateinit var tvQus: TextView
+    private lateinit var tvop1: TextView
+    private lateinit var tvop2: TextView
+    private lateinit var tvop3: TextView
+    private lateinit var tvop4: TextView
 
 
-    lateinit var btnNex : TextView
+   private lateinit var ivopt1: ImageView
+   private lateinit var ivopt2: ImageView
+   private lateinit var ivopt3: ImageView
+   private lateinit var ivopt4: ImageView
 
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val builder = AlertDialog.Builder(this)
+        val resultView = LayoutInflater.from(this).inflate(R.layout.showresult, null)
+        builder.setView(resultView)
+        builder.setCancelable(false)
+        val tvTotalQuestion = resultView.findViewById<TextView>(R.id.tv_total)
+        val tvRightAns = resultView.findViewById<TextView>(R.id.tv_result)
+        val btnClose = resultView.findViewById<Button>(R.id.btn_close)
+        val alertDialog = builder.create()
+
+//
+//
+//            //relation lauout id identify
         rlopt1 = findViewById(R.id.rl_1)
         rlopt2 = findViewById(R.id.rl_2)
         rlopt3 = findViewById(R.id.rl_3)
@@ -140,7 +160,7 @@ class MainActivity : AppCompatActivity() {
 
 
         btnNex = findViewById(R.id.btn_next)
-        tvQusNo= findViewById(R.id.tv_quiz)
+        tvQusNo = findViewById(R.id.tv_quiz)
 
 
         tvQus.text = question[index].mqus
@@ -148,43 +168,88 @@ class MainActivity : AppCompatActivity() {
         tvop2.text = question[index].mopt2
         tvop3.text = question[index].mopt3
         tvop4.text = question[index].mopt4
-        tvQusNo.text = "${index +1 }/ ${question.size}"
+        tvQusNo.text = "${index + 1}/ ${question.size}"
+
+//
 
 
-        rlopt1.setOnClickListener{
+        rlopt1.setOnClickListener {
+
+            rlopt1.setBackgroundColor(Color.parseColor("#34d408"))
+            rlopt2.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt3.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt4.setBackgroundColor(Color.parseColor("#fff000"))
+
+
+
             ivopt1.visibility = View.VISIBLE
             ivopt2.visibility = View.INVISIBLE
             ivopt3.visibility = View.INVISIBLE
             ivopt4.visibility = View.INVISIBLE
+            isoptSelected = true
             question[index].mselans = "A"
         }
 
-        rlopt2.setOnClickListener{
-            ivopt1.visibility = View.VISIBLE
-            ivopt2.visibility = View.INVISIBLE
+        rlopt2.setOnClickListener {
+
+            rlopt1.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt2.setBackgroundColor(Color.parseColor("#34d408"))
+            rlopt3.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt4.setBackgroundColor(Color.parseColor("#fff000"))
+
+
+            ivopt1.visibility = View.INVISIBLE
+            ivopt2.visibility = View.VISIBLE
             ivopt3.visibility = View.INVISIBLE
             ivopt4.visibility = View.INVISIBLE
+            isoptSelected = true
             question[index].mselans = "B"
         }
 
-        rlopt3.setOnClickListener{
-            ivopt1.visibility = View.VISIBLE
+        rlopt3.setOnClickListener {
+
+
+            rlopt1.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt2.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt3.setBackgroundColor(Color.parseColor("#34d408"))
+            rlopt4.setBackgroundColor(Color.parseColor("#fff000"))
+
+
+            ivopt1.visibility = View.INVISIBLE
             ivopt2.visibility = View.INVISIBLE
-            ivopt3.visibility = View.INVISIBLE
+            ivopt3.visibility = View.VISIBLE
             ivopt4.visibility = View.INVISIBLE
+            isoptSelected = true
             question[index].mselans = "C"
         }
 
-        rlopt4.setOnClickListener{
-            ivopt1.visibility = View.VISIBLE
+        rlopt4.setOnClickListener {
+
+            rlopt1.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt2.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt3.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt4.setBackgroundColor(Color.parseColor("#34d408"))
+
+
+            ivopt1.visibility = View.INVISIBLE
             ivopt2.visibility = View.INVISIBLE
             ivopt3.visibility = View.INVISIBLE
-            ivopt4.visibility = View.INVISIBLE
+            ivopt4.visibility = View.VISIBLE
+            isoptSelected = true
             question[index].mselans = "D"
         }
 
-        btnNex.setOnClickListener{
-            if (index <question.size -1){
+
+
+        btnNex.setOnClickListener { it ->
+            if (!isoptSelected) {
+                val select = Snackbar.make(it, "Please Select a Option", Snackbar.LENGTH_LONG)
+                select.setAction("Okay") {
+                    select.dismiss()
+                }
+                select.show()
+            } else if (index < question.size - 1) {
+                isoptSelected = true
                 index++
 
 
@@ -192,26 +257,35 @@ class MainActivity : AppCompatActivity() {
                 ivopt2.visibility = View.INVISIBLE
                 ivopt3.visibility = View.INVISIBLE
                 ivopt4.visibility = View.INVISIBLE
-
-
-                tvQus.text=question[index].mqus
+                tvQus.text = question[index].mqus
                 tvop1.text = question[index].mopt1
                 tvop2.text = question[index].mopt2
                 tvop3.text = question[index].mopt3
                 tvop4.text = question[index].mopt4
+
                 tvQusNo.text = "${index + 1} / ${question.size}"
-
-                if (index == question.size-1) btnNex.text = "Submit"
-            }
-
-
-            else{
+                isoptSelected = false
+                if (index == question.size - 1) btnNex.text = "Submit"
+            } else {
                 question.forEach {
+//                    Log.d("ans", it.mUserSelectedAns)
+                    if (it.mans == it.mselans) right++
 
                 }
+
+                tvTotalQuestion.text = "Total Questions: " + question.size.toString()
+                tvRightAns.text = "Right Answer: $right"
+                alertDialog.show()
             }
 
+        }
+        btnClose.setOnClickListener {
+            alertDialog.dismiss()
+            finish()
+            startActivity(intent)
 
-            }
         }
     }
+}
+
+

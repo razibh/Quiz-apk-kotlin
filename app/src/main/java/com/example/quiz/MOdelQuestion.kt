@@ -2,13 +2,13 @@ package com.example.quiz
 
 class MOdelQuestion (ques: String, opt1:String,opt2:String,opt3:String,opt4:String, ans:String, selectedAns: String=" ") {
 
-    lateinit var mqus: String
-    lateinit var mopt1: String
-    lateinit var mopt2: String
-    lateinit var mopt3: String
-    lateinit var mopt4: String
-    lateinit var mans: String
-    lateinit var mselans: String
+    var mqus: String
+    var mopt1: String
+    var mopt2: String
+    var mopt3: String
+    var mopt4: String
+    var mans: String
+    var mselans: String
 
 
     init {
