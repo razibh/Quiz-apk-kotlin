@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Quiz</string>
+    <string name="quiz_result">Quiz Result</string>
+    <string name="total_question_10">Total Question : 10</string>
+    <string name="right_answer_0">Right Answer : 0</string>
+    <string name="close">Close</string>
+    <string name="ques_1_10">Ques: 1/10</string>
+    <string name="time_10">Time: 10</string>
+    <string name="a">A</string>
+    <string name="_1st_question">1st question</string>
+    <string name="b">B</string>
+    <string name="_2nd_question">2nd question</string>
+    <string name="_3rd_question">3rd question</string>
+    <string name="_4th_question">4th question</string>
+    <string name="next">Next</string>
 </resources>

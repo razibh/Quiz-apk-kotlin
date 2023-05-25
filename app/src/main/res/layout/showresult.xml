@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="30dp"
+   android:background="#E7D63E"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quiz_result"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:id="@+id/tv_total"
+        android:text="@string/total_question_10"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/right_answer_0"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:id="@+id/tv_result"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/btn_close"
+        android:layout_height="wrap_content"
+        android:text="@string/close"/>
+
+</LinearLayout>
