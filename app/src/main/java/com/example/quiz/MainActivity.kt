@@ -3,8 +3,8 @@ package com.example.quiz
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -12,7 +12,9 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -104,6 +106,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var tvQusNo: TextView
     private lateinit var btnNex: Button
+   private lateinit var  countTime : TextView
+   private var backprestime : Long=0
 
     private lateinit var rlopt1: RelativeLayout
     private lateinit var rlopt2: RelativeLayout
@@ -140,10 +144,14 @@ class MainActivity : AppCompatActivity() {
 //
 //
 //            //relation lauout id identify
+        countTime = findViewById(R.id.time)
+
+
         rlopt1 = findViewById(R.id.rl_1)
         rlopt2 = findViewById(R.id.rl_2)
         rlopt3 = findViewById(R.id.rl_3)
         rlopt4 = findViewById(R.id.rl_4)
+
 
 
         tvQus = findViewById(R.id.tv_quiz_id)
@@ -176,9 +184,9 @@ class MainActivity : AppCompatActivity() {
         rlopt1.setOnClickListener {
 
             rlopt1.setBackgroundColor(Color.parseColor("#34d408"))
-            rlopt2.setBackgroundColor(Color.parseColor("#fff000"))
-            rlopt3.setBackgroundColor(Color.parseColor("#fff000"))
-            rlopt4.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt2.setBackgroundResource(R.drawable.layout)
+            rlopt3.setBackgroundResource(R.drawable.layout)
+            rlopt4.setBackgroundResource(R.drawable.layout)
 
 
 
@@ -192,10 +200,10 @@ class MainActivity : AppCompatActivity() {
 
         rlopt2.setOnClickListener {
 
-            rlopt1.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt1.setBackgroundResource(R.drawable.layout)
             rlopt2.setBackgroundColor(Color.parseColor("#34d408"))
-            rlopt3.setBackgroundColor(Color.parseColor("#fff000"))
-            rlopt4.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt3.setBackgroundResource(R.drawable.layout)
+            rlopt4.setBackgroundResource(R.drawable.layout)
 
 
             ivopt1.visibility = View.INVISIBLE
@@ -209,10 +217,10 @@ class MainActivity : AppCompatActivity() {
         rlopt3.setOnClickListener {
 
 
-            rlopt1.setBackgroundColor(Color.parseColor("#fff000"))
-            rlopt2.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt1.setBackgroundResource(R.drawable.layout)
+            rlopt2.setBackgroundResource(R.drawable.layout)
             rlopt3.setBackgroundColor(Color.parseColor("#34d408"))
-            rlopt4.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt4.setBackgroundResource(R.drawable.layout)
 
 
             ivopt1.visibility = View.INVISIBLE
@@ -225,9 +233,9 @@ class MainActivity : AppCompatActivity() {
 
         rlopt4.setOnClickListener {
 
-            rlopt1.setBackgroundColor(Color.parseColor("#fff000"))
-            rlopt2.setBackgroundColor(Color.parseColor("#fff000"))
-            rlopt3.setBackgroundColor(Color.parseColor("#fff000"))
+            rlopt1.setBackgroundResource(R.drawable.layout)
+            rlopt2.setBackgroundResource(R.drawable.layout)
+            rlopt3.setBackgroundResource(R.drawable.layout)
             rlopt4.setBackgroundColor(Color.parseColor("#34d408"))
 
 
@@ -239,6 +247,34 @@ class MainActivity : AppCompatActivity() {
             question[index].mselans = "D"
         }
 
+
+        fun countTime() {
+            val duration: Long = TimeUnit.MINUTES.toMillis(2)
+
+            object : CountDownTimer(duration, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    val minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
+                    val seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60
+                    val sduration = String.format("%02d:%02d", minutes, seconds)
+                    println(sduration)
+                    countTime.text = sduration
+                }
+
+                override fun onFinish() {
+                    println("Countdown finished")
+                    question.forEach {
+//                    Log.d("ans", it.mUserSelectedAns)
+                        if (it.mans == it.mselans) right++
+
+                    }
+
+                    tvTotalQuestion.text = "Total Questions: " + question.size.toString()
+                    tvRightAns.text = "Right Answer: $right"
+                    alertDialog.show()
+                }
+            }.start()
+        }
+        countTime()
 
 
         btnNex.setOnClickListener { it ->
@@ -252,6 +288,10 @@ class MainActivity : AppCompatActivity() {
                 isoptSelected = true
                 index++
 
+                rlopt1.setBackgroundColor(Color.parseColor("#fff000"))
+                rlopt2.setBackgroundColor(Color.parseColor("#fff000"))
+                rlopt3.setBackgroundColor(Color.parseColor("#fff000"))
+                rlopt4.setBackgroundColor(Color.parseColor("#fff000"))
 
                 ivopt1.visibility = View.INVISIBLE
                 ivopt2.visibility = View.INVISIBLE
@@ -285,7 +325,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+
     }
+
+
+
+
 }
+
 
 
