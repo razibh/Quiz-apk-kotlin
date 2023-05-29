@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,6 +9,11 @@
     android:padding="20dp"
     tools:context=".MainActivity">
 
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="96dp"
@@ -19,7 +24,8 @@
         app:civ_border_color="#FF000000"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/rl">
         <TextView
             android:id="@+id/tv_quiz"
             android:textSize="22sp"
@@ -42,187 +48,195 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"/>
 
-    <TextView
-        android:id="@+id/tv_quiz_id"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginTop="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="5dp"/>
-
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"/>
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="60dp"
-       android:id="@+id/rl_1"
-       android:gravity="center_vertical"
-       android:background="@drawable/layout"
-       android:orientation="horizontal">
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-           android:padding="10dp"
-           android:id="@+id/tv1st_opt"
-           android:textSize="25sp"
-           android:textStyle="bold"
-           android:textColor="@color/black"
-           android:background="@drawable/circle"
-           android:layout_gravity="center"
-           android:text="@string/a"/>
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:padding="10dp"
-           android:id="@+id/tv_opt1"
-           android:layout_toEndOf="@+id/tv1st_opt"
-           android:textColor="@color/black"
-           android:textSize="25sp"
-           android:text="@string/_1st_question"/>
-
-
-       <ImageView
-           android:layout_alignParentEnd="true"
-           android:visibility="invisible"
-           android:src="@drawable/ic_baseline_check_24"
-           android:background="@drawable/circle"
-           android:id="@+id/imgv_1"
-           android:layout_width="50dp"
-           android:layout_height="match_parent"/>
-   </RelativeLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp"/>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/rl_2"
-        android:background="@drawable/layout"
-        android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv2nd_opt"
-            android:textSize="25sp"
-            android:layout_marginEnd="20dp"
-            android:padding="10dp"
-            android:textColor="@color/black"
+            android:id="@+id/tv_quiz_id"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:background="@drawable/circle"
-            android:text="@string/b"/>
-        <TextView
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:padding="10dp"
-            android:id="@+id/tv_opt2"
-           android:layout_toEndOf="@+id/tv2nd_opt"
-            android:textColor="@color/black"
-            android:text="@string/_2nd_question"/>
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:visibility="invisible"
-            android:id="@+id/imgv_2"
-            android:background="@drawable/circle"
-            android:src="@drawable/ic_baseline_check_24"/>
-    </RelativeLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp"/>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/rl_3"
-        android:background="@drawable/layout"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv3rd_opt"
-            android:layout_marginEnd="20dp"
-            android:textSize="25sp"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:background="@drawable/circle"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:text="C"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:textColor="@color/black"
-            android:padding="10dp"
-            android:id="@+id/tv_opt3"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/tv3rd_opt"
-            android:textSize="25sp"
-            android:text="@string/_3rd_question"/>
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_baseline_check_24"
-            android:background="@drawable/circle"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/imgv_3"
-            android:visibility="invisible"/>
-    </RelativeLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp"/>
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="@drawable/layout"
-        android:id="@+id/rl_4"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv4th_opt"
-        android:layout_marginEnd="20dp"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:padding="10dp"
-        android:background="@drawable/circle"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:text="D"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:textColor="@color/black"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_toEndOf="@+id/tv4th_opt"
-        android:id="@+id/tv_opt4"
-        android:textSize="25sp"
-        android:text="@string/_4th_question"/>
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="match_parent"
-        android:src="@drawable/ic_baseline_check_24"
-        android:background="@drawable/circle"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/imgv_4"
-        android:visibility="invisible"/>
-</RelativeLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="30dp"/>
-    <Button
-        android:background="@drawable/layout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/next"
-        android:id="@+id/btn_next"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/rl_1"
+            android:gravity="center_vertical"
+            android:background="@drawable/layout"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:padding="10dp"
+                android:id="@+id/tv1st_opt"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:background="@drawable/circle"
+                android:layout_gravity="center"
+                android:text="@string/a"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/tv_opt1"
+                android:layout_toEndOf="@+id/tv1st_opt"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:text="@string/_1st_question"/>
+
+
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:visibility="invisible"
+                android:src="@drawable/ic_baseline_check_24"
+                android:background="@drawable/circle"
+                android:id="@+id/imgv_1"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/rl_2"
+            android:background="@drawable/layout"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv2nd_opt"
+                android:textSize="25sp"
+                android:layout_marginEnd="20dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:background="@drawable/circle"
+                android:text="@string/b"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:padding="10dp"
+                android:id="@+id/tv_opt2"
+                android:layout_toEndOf="@+id/tv2nd_opt"
+                android:textColor="@color/black"
+                android:text="@string/_2nd_question"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:visibility="invisible"
+                android:id="@+id/imgv_2"
+                android:background="@drawable/circle"
+                android:src="@drawable/ic_baseline_check_24"/>
+        </RelativeLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/rl_3"
+            android:background="@drawable/layout"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv3rd_opt"
+                android:layout_marginEnd="20dp"
+                android:textSize="25sp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:background="@drawable/circle"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:text="C"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                android:id="@+id/tv_opt3"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/tv3rd_opt"
+                android:textSize="25sp"
+                android:text="@string/_3rd_question"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_check_24"
+                android:background="@drawable/circle"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/imgv_3"
+                android:visibility="invisible"/>
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/layout"
+            android:id="@+id/rl_4"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv4th_opt"
+                android:layout_marginEnd="20dp"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                android:background="@drawable/circle"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:text="D"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_toEndOf="@+id/tv4th_opt"
+                android:id="@+id/tv_opt4"
+                android:textSize="25sp"
+                android:text="@string/_4th_question"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_check_24"
+                android:background="@drawable/circle"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/imgv_4"
+                android:visibility="invisible"/>
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+        <Button
+            android:background="@drawable/layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/next"
+            android:id="@+id/btn_next"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+
 </LinearLayout>
+
+</ScrollView>
+
+
+

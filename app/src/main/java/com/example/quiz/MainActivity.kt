@@ -249,7 +249,7 @@ class MainActivity : AppCompatActivity() {
 
 
         fun countTime() {
-            val duration: Long = TimeUnit.MINUTES.toMillis(2)
+            val duration: Long = TimeUnit.MINUTES.toMillis(5)
 
             object : CountDownTimer(duration, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
